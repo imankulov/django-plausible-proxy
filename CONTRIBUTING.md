@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/imankulov/django_plausible_proxy/issues.
+Report bugs at https://github.com/imankulov/django-plausible-proxy/issues.
 
 If you are reporting a bug, please include:
 
@@ -35,7 +35,7 @@ articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/imankulov/django_plausible_proxy/issues.
+The best way to send feedback is to file an issue at https://github.com/imankulov/django-plausible-proxy/issues.
 
 If you are proposing a feature:
 
@@ -46,13 +46,13 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `django_plausible_proxy` for local development.
+Ready to contribute? Here's how to set up `django-plausible-proxy` for local development.
 
-1. Fork the `django_plausible_proxy` repo on GitHub.
+1. Fork the `django-plausible-proxy` repo on GitHub.
 2. Clone your fork locally
 
 ```
-    $ git clone git@github.com:your_name_here/django_plausible_proxy.git
+    $ git clone git@github.com:your_name_here/django-plausible-proxy.git
 ```
 
 3. Ensure [poetry](https://python-poetry.org/docs/) is installed.
@@ -96,13 +96,13 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.md.
 3. The pull request should work for Python 3.7, 3.8, 3.9 and for PyPy. Check
-   https://github.com/imankulov/django_plausible_proxy/actions
+   https://github.com/imankulov/django-plausible-proxy/actions
    and make sure that the tests pass for all supported Python versions.
 
 ## Tips
 
 ```
-    $ pytest tests.test_django_plausible_proxy
+    $ pytest tests
 ```
 
 To run a subset of tests.
