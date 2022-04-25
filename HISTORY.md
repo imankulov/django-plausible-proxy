@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.1.2 (2022-04-25)
 
 - Fix app config
 
