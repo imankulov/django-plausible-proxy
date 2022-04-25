@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.1.1 (2022-04-25)
 
 - Fix project metadata
 
