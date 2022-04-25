@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class RecipientsConfig(AppConfig):
+class DjangoPlausibleConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "reception.plausible"
+    name = "plausible_proxy"
     verbose_name = "Plausible Proxy"
