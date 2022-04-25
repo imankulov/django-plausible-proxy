@@ -1,0 +1,13 @@
+[darglint]
+# Variants: short, long, full, where "long" is the most permissive.
+# Ref: https://github.com/terrencepreilly/darglint#strictness-configuration
+strictness = long
+
+# Ref: https://google.github.io/styleguide/pyguide.html#383-functions-and-methods
+docstring_style = google
+
+# Ignore exception-based errors (Missing exception, Excess exception).
+#
+# Quite often, darglint can't properly detect when and which exceptions are raised,
+# so we mute these reports.
+ignore = DAR401,DAR402

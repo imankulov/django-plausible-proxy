@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "django_plausible_proxy"
+version = "0.1.0"
+homepage = "https://github.com/imankulov/django_plausible_proxy"
+description = "Django module to proxy requests to Plausible Analytics."
+authors = ["Roman Imankulov <roman.imankulov@gmail.com>"]
+readme = "README.md"
+license =  "MIT"
+classifiers=[
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+]
+packages = [
+    { include = "plausible_proxy" },
+    { include = "tests", format = "sdist" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7.8"
+Django = ">=3.2"
+requests = "^2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7"
+pytest-xdist = "^2.5.0"
+coverage = "^6.2"
+pytest-django = "^4.5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+source = ["tests", "Django Plausible Proxy"]

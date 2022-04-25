@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# IDE settings
+.vscode/
+
+# For libraries, we don't want to commit the lockfile
+poetry.lock

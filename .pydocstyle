@@ -1,0 +1,7 @@
+[pydocstyle]
+# Based on Google convention:
+# Ref: http://www.pydocstyle.org/en/stable/error_codes.html#default-conventions
+# Except for the following:
+# - Ignore D1 (missing docstrings)
+ignore = D1, D203, D204, D213, D215, D400, D401, D404, D406, D407, D408, D409, D413
+
