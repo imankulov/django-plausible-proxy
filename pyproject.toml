@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "django_plausible_proxy"
+name = "django-plausible-proxy"
 version = "0.1.0"
-homepage = "https://github.com/imankulov/django_plausible_proxy"
+homepage = "https://github.com/imankulov/django-plausible-proxy"
 description = "Django module to proxy requests to Plausible Analytics."
 authors = ["Roman Imankulov <roman.imankulov@gmail.com>"]
 readme = "README.md"
@@ -38,4 +38,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.coverage.run]
-source = ["tests", "Django Plausible Proxy"]
+source = ["tests", "plausible_proxy"]
