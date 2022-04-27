@@ -15,7 +15,7 @@ https://<yourdomain.com>/api/event    -> https://plausible.io/api/event
 
 ## Server-side events
 
-Track on the server side events that can't be tracker otherwise, such as API requests.
+Track on the server side events that can't be tracked otherwise, such as API requests.
 
 ```python
 from plausible_proxy import send_custom_event
