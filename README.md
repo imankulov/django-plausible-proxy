@@ -1,6 +1,6 @@
 # Django Plausible Proxy
 
-Django module to proxy requests and send server-side events to Plausible Analytics.
+Django application to proxy requests and send server-side events to Plausible Analytics.
 
 ## Proxying
 
