@@ -111,3 +111,12 @@ Arguments:
 - `props` (optional dict): Custom properties for the event. See: [Using custom props](https://plausible.io/docs/custom-event-goals#using-custom-props).
 
 Returns: True if request was accepted successfully.
+
+Example:
+
+```python
+def vote(request, candidate_id):
+    candidate = get_object_or_404(Candidate, pk=candidate_id)
+    send_custom_event(request, 'vote', props={"candidate": candidate.full_name})
+    ...
+```
