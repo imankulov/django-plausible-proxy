@@ -17,7 +17,8 @@ ALLOWED_SCRIPT_NAMES = {
     "script.manual.js",
 }
 
-PLAUSIBLE_EVENT_API_ENDPOINT = "https://plausible.io/api/event"
+PLAUSIBLE_BASE_URL = settings.PLAUSIBLE_BASE_URL or "https://plausible.io"
+PLAUSIBLE_EVENT_API_ENDPOINT = f"{PLAUSIBLE_BASE_URL}/api/event"
 
 
 CACHE_TTL = 86400
@@ -60,7 +61,7 @@ def get_script(script_name: str) -> ContentAndHeaders:
     if script_bytes is not sentinel:
         return script_bytes, SCRIPT_HEADERS
 
-    resp = requests.get(f"https://plausible.io/js/{script_name}")
+    resp = requests.get(f"{PLAUSIBLE_BASE_URL}/js/{script_name}")
     resp.raise_for_status()
     script_bytes = resp.content
     cache.set(cache_key, script_bytes, CACHE_TTL)

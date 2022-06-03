@@ -45,6 +45,10 @@ INSTALLED_APPS = [
 # Optionally, define a default value for Plausible domain to provide a default value
 # for the Plausible domain and the `send_custom_event()` function.
 PLAUSIBLE_DOMAIN = "yourdomain.com"
+
+# Optionally, define the plausible endpoint that you would like to post to.
+# This is useful if you are self-hosting plausible.
+PLAUSIBLE_BASE_URL = "https://plausible.io"
 ```
 
 Update `urls.py`.
