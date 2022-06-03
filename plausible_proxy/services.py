@@ -17,7 +17,7 @@ ALLOWED_SCRIPT_NAMES = {
     "script.manual.js",
 }
 
-PLAUSIBLE_BASE_URL = settings.PLAUSIBLE_BASE_URL or "https://plausible.io"
+PLAUSIBLE_BASE_URL = getattr(settings, "PLAUSIBLE_BASE_URL", "https://plausible.io")
 PLAUSIBLE_EVENT_API_ENDPOINT = f"{PLAUSIBLE_BASE_URL}/api/event"
 
 
