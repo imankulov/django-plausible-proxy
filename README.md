@@ -55,7 +55,7 @@ from django.urls import include, path
 
 urlpatterns = [
     # ...
-    path("", include("plausible-proxy.urls")),
+    path("", include("plausible_proxy.urls")),
     # ...
 ]
 ```
