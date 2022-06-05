@@ -124,3 +124,9 @@ def vote(request, candidate_id):
     send_custom_event(request, 'vote', props={"candidate": candidate.full_name})
     ...
 ```
+
+## Contributors
+
+<a href="https://github.com/imankulov/django-plausible-proxy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=imankulov/django-plausible-proxy" />
+</a>
