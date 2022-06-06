@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.2.0 (2022-06-06)
 
 - Added PLAUSIBLE_BASE_URL settings option to make it possible to use the project with self-hosted Plausible installations. The default value is https://plausible.io (use the cloud version.)
 - Made PLAUSIBLE_DOMAIN settings optional. If the value is not set, the domain name is taken from the request.
