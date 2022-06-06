@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.3.0 (2022-06-06)
 
 - Added PLAUSIBLE_SCRIPT_PREFIX to make it possible override default location of the proxy script (`js/script.js` -> `${PLAUSIBLE_SCRIPT_PREFIX}/script.js`). Thanks @aareman for the suggestion. Ref #2.
 
