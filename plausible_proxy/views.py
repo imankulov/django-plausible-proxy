@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from plausible_proxy.services import (
     EVENT_HEADERS,
-    PLAUSIBLE_EVENT_API_ENDPOINT,
+    get_plausible_event_api_endpoint,
     get_script,
     get_user_agent,
     get_xff,
@@ -29,7 +29,7 @@ def script_proxy(request: HttpRequest, script_name: str):
 @csrf_exempt
 def event_proxy(request: HttpRequest):
     resp = requests.post(
-        PLAUSIBLE_EVENT_API_ENDPOINT,
+        get_plausible_event_api_endpoint(),
         data=request.body,
         headers={
             "content-type": "application/json",

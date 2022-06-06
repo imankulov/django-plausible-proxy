@@ -17,9 +17,6 @@ ALLOWED_SCRIPT_NAMES = {
     "script.manual.js",
 }
 
-PLAUSIBLE_BASE_URL = getattr(settings, "PLAUSIBLE_BASE_URL", "https://plausible.io")
-PLAUSIBLE_EVENT_API_ENDPOINT = f"{PLAUSIBLE_BASE_URL}/api/event"
-
 
 CACHE_TTL = 86400
 
@@ -61,7 +58,7 @@ def get_script(script_name: str) -> ContentAndHeaders:
     if script_bytes is not sentinel:
         return script_bytes, SCRIPT_HEADERS
 
-    resp = requests.get(f"{PLAUSIBLE_BASE_URL}/js/{script_name}")
+    resp = requests.get(f"{get_plausible_base_url()}/js/{script_name}")
     resp.raise_for_status()
     script_bytes = resp.content
     cache.set(cache_key, script_bytes, CACHE_TTL)
@@ -102,7 +99,7 @@ def send_custom_event(
     if url is None:
         url = request.build_absolute_uri()
     if domain is None:
-        domain = get_default_domain()
+        domain = get_default_domain(request)
 
     event_data = {
         "name": name,
@@ -115,7 +112,7 @@ def send_custom_event(
     event_data = {k: v for k, v in event_data.items() if v is not None}
 
     resp = requests.post(
-        PLAUSIBLE_EVENT_API_ENDPOINT,
+        get_plausible_event_api_endpoint(),
         json=event_data,
         headers={
             "content-type": "application/json",
@@ -140,9 +137,23 @@ def get_user_agent(request: HttpRequest) -> str:
     return request.META.get("HTTP_USER_AGENT") or ""
 
 
-def get_default_domain() -> str:
+def get_default_domain(request: HttpRequest) -> str:
     """Return default Plausible domain for send_custom_event().
 
     The value is taken from settings.PLAUSIBLE_DOMAIN
     """
-    return settings.PLAUSIBLE_DOMAIN
+    return getattr(settings, "PLAUSIBLE_DOMAIN", request.get_host())
+
+
+def get_plausible_base_url() -> str:
+    """Return the Plausible base URL.
+
+    The variable defines the destination to send events. Default to
+    https://plausible.io, but you can set a custom value in PLAUSIBLE_BASE_URL if you
+    want to send events to your local Plausible installation.
+    """
+    return getattr(settings, "PLAUSIBLE_BASE_URL", "https://plausible.io")
+
+
+def get_plausible_event_api_endpoint() -> str:
+    return f"{get_plausible_base_url()}/api/event"
