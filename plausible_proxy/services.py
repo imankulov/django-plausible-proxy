@@ -157,3 +157,8 @@ def get_plausible_base_url() -> str:
 
 def get_plausible_event_api_endpoint() -> str:
     return f"{get_plausible_base_url()}/api/event"
+
+
+def get_script_prefix() -> str:
+    """Return the script prefix."""
+    return getattr(settings, "PLAUSIBLE_SCRIPT_PREFIX", "js")

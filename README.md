@@ -49,6 +49,16 @@ PLAUSIBLE_DOMAIN = "yourdomain.com"
 # Optionally, define the plausible endpoint that you would like to post to.
 # This is useful if you are self-hosting plausible.
 PLAUSIBLE_BASE_URL = "https://plausible.io"
+
+# Optionally, define the value for the script prefix. The default value is "js". When
+# you include the script to the page with the {% plausible %} templatetag, it becomes
+# available as "<script src='${PLAUSIBLE_SCRIPT_PREFIX}/script.js'></script>". E.g.,
+# "<script src='js/script.js'></script>"
+#
+# Overriding PLAUSIBLE_SCRIPT_PREFIX is helpful to avoid clashes with another script
+# of your site that may become available under the same name.
+
+PLAUSIBLE_SCRIPT_PREFIX = "plsbl/js"
 ```
 
 Update `urls.py`.
