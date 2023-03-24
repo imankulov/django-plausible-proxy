@@ -31,6 +31,8 @@ EVENT_HEADERS = {
     "cache-control": "must-revalidate, max-age=0, private",
 }
 
+REQUEST_TIMEOUT = getattr(settings, "PLAUSIBLE_REQUEST_TIMEOUT", 1)
+
 ContentAndHeaders = Tuple[bytes, Dict[str, str]]
 
 
@@ -58,7 +60,9 @@ def get_script(script_name: str) -> ContentAndHeaders:
     if script_bytes is not sentinel:
         return script_bytes, SCRIPT_HEADERS
 
-    resp = requests.get(f"{get_plausible_base_url()}/js/{script_name}")
+    resp = requests.get(
+        f"{get_plausible_base_url()}/js/{script_name}", timeout=REQUEST_TIMEOUT
+    )
     resp.raise_for_status()
     script_bytes = resp.content
     cache.set(cache_key, script_bytes, CACHE_TTL)
@@ -111,16 +115,20 @@ def send_custom_event(
     }
     event_data = {k: v for k, v in event_data.items() if v is not None}
 
-    resp = requests.post(
-        get_plausible_event_api_endpoint(),
-        json=event_data,
-        headers={
-            "content-type": "application/json",
-            "x-forwarded-for": get_xff(request),
-            "user-agent": get_user_agent(request),
-        },
-    )
-    return resp.ok
+    try:
+        resp = requests.post(
+            get_plausible_event_api_endpoint(),
+            json=event_data,
+            headers={
+                "content-type": "application/json",
+                "x-forwarded-for": get_xff(request),
+                "user-agent": get_user_agent(request),
+            },
+            timeout=REQUEST_TIMEOUT,
+        )
+        return resp.ok
+    except requests.Timeout:
+        return False
 
 
 def get_xff(request: HttpRequest) -> str:
