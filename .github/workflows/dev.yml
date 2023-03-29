@@ -14,7 +14,7 @@ jobs:
   test:
     strategy:
       matrix:
-        python-versions: ["3.7", "3.8", "3.9", "3.10"]
+        python-versions: ["3.7", "3.8", "3.9", "3.10", "3.11"]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
 
@@ -29,15 +29,13 @@ jobs:
       - name: Install dependencies
         run: |
           set -ex
-          curl -O -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py
-          python get-poetry.py --yes
-          rm -f get-poetry.py
-          $HOME/.poetry/bin/poetry install
+          curl -sSL https://install.python-poetry.org | python3 -
+          $HOME/.local/bin/poetry install
 
       - name: Install tox
         run: |
-          $HOME/.poetry/bin/poetry add tox tox-gh-actions
+          $HOME/.local/bin/poetry add tox tox-gh-actions
 
       - name: Test with tox
         run:
-          $HOME/.poetry/bin/poetry run tox
+          $HOME/.local/bin/poetry run tox
