@@ -1,5 +1,10 @@
 # History
 
+## UNRELEASED
+
+- Added support for Python 3.11.
+- Set timeout for upstream requests and added PLAUSIBLE_REQUEST_TIMEOUT settings option to override it. Thanks @yoshson for the contribution. PR #5.
+
 ## 0.3.0 (2022-06-06)
 
 - Added PLAUSIBLE_SCRIPT_PREFIX to make it possible override default location of the proxy script (`js/script.js` -> `${PLAUSIBLE_SCRIPT_PREFIX}/script.js`). Thanks @aareman for the suggestion. Ref #2.
