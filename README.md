@@ -1,3 +1,10 @@
+![Dev workflow](https://github.com/imankulov/django-plausible-proxy/workflows/dev%20workflow/badge.svg)
+![PyPI](https://img.shields.io/pypi/v/django-plausible-proxy.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-plausible-proxy.svg)
+![PyPI - Status](https://img.shields.io/pypi/status/django-plausible-proxy.svg)
+![PyPI - License](https://img.shields.io/pypi/l/django-plausible-proxy.svg)
+
+
 # Django Plausible Proxy
 
 Django application to proxy requests and send server-side events to Plausible Analytics. Plays well with self-hosted and the managed cloud service.
