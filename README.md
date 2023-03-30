@@ -59,6 +59,12 @@ PLAUSIBLE_BASE_URL = "https://plausible.io"
 # of your site that may become available under the same name.
 
 PLAUSIBLE_SCRIPT_PREFIX = "plsbl/js"
+
+# Optionally, provide a timeout for the connection to your plausible endpoint in
+# seconds. Defaults to 1 second. Adjust to lower values in case you can't trust your
+# infrastructure to consistently deliver low load times and you don't care as much
+# about consistent analytics.
+PLAUSIBLE_REQUEST_TIMEOUT = 1
 ```
 
 Update `urls.py`.
