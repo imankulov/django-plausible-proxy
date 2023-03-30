@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-plausible-proxy"
-version = "0.3.0"
+version = "0.4.0"
 homepage = "https://github.com/imankulov/django-plausible-proxy"
 description = "Django module to proxy requests to Plausible Analytics."
 authors = ["Roman Imankulov <roman.imankulov@gmail.com>"]

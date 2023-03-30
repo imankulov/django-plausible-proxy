@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.4.0 (2023-03-30)
 
 - Added support for Python 3.11.
 - Set timeout for upstream requests and added PLAUSIBLE_REQUEST_TIMEOUT settings option to override it. Thanks @yoshson for the contribution. PR #5.
