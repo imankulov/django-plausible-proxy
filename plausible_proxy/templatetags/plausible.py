@@ -1,9 +1,8 @@
 from django import template
+from django.conf import settings
 from django.forms.utils import flatatt
 from django.urls import reverse
 from django.utils.safestring import mark_safe
-
-from plausible_proxy.services import get_default_domain
 
 register = template.Library()
 
@@ -25,7 +24,14 @@ def plausible(context, domain=None, script="script.js"):
         `<script data-domain="example.com" src="/js/script.js" defer></script>`
     """
     if domain is None:
-        domain = get_default_domain(context["request"])
+        domain = getattr(settings, "PLAUSIBLE_DOMAIN", None)
+    if domain is None:
+        request = context.get("request")
+        if request is None:
+            raise ValueError(
+                "PLAUSIBLE_DOMAIN is not defined and request is not set in context."
+            )
+        domain = request.get_host()
     attrs = {
         "defer": True,
         "data-domain": domain,
