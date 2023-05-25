@@ -4,6 +4,8 @@
 
 - Drop support for Python 3.7.
 - Make it possible to call send_custom_event() with explicit remote_addr.
+- Make it possible to render the {% plausible %} templatetag without the request object, when PLAUSIBLE_DOMAIN is set
+  in settings. Thanks @hendi for the report. Ref #7.
 
 ## 0.4.0 (2023-03-30)
 

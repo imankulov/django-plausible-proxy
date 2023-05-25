@@ -23,6 +23,23 @@ def test_plausible_uses_plausible_domain_if_defined(rf, settings):
     )
 
 
+def test_plausible_uses_plausible_domain_if_request_not_defined(rf, settings):
+    settings.PLAUSIBLE_DOMAIN = "example2.com"
+    template = Template("{% load plausible %}{% plausible %}")
+    context = Context()
+    assert (
+        template.render(context)
+        == '<script data-domain="example2.com" src="/js/script.js" defer></script>'
+    )
+
+
+def test_plausible_raises_exception_if_domain_not_defined_anywhere(rf, settings):
+    template = Template("{% load plausible %}{% plausible %}")
+    context = Context()
+    with pytest.raises(ValueError):
+        template.render(context)
+
+
 @pytest.mark.skip(
     "Test fails as urlconf and urls.py content is cached. "
     "Still, the test works in isolation"
