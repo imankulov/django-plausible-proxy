@@ -2,6 +2,7 @@
 
 ## UNRELEASED
 
+- Drop support for Python 3.7.
 - Make it possible to call send_custom_event() with explicit remote_addr.
 
 ## 0.4.0 (2023-03-30)
