@@ -1,5 +1,9 @@
 # History
 
+## UNRELEASED
+
+- Make it possible to call send_custom_event() with explicit remote_addr.
+
 ## 0.4.0 (2023-03-30)
 
 - Added support for Python 3.11.

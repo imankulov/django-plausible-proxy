@@ -76,6 +76,7 @@ def send_custom_event(
     url: Optional[str] = None,
     referrer: Optional[str] = None,
     screen_width: Optional[int] = None,
+    remote_addr: Optional[str] = None,
     props: Optional[Dict[str, Any]] = None,
 ) -> bool:
     """Send a custom event to Plausible and return successful status.
@@ -94,6 +95,8 @@ def send_custom_event(
             set, will be extracted from the request.
         referrer: Referrer for this event.
         screen_width: Width of the screen.
+        remote_addr: Remote address of the user. If not set, will be extracted from
+            the request.
         props: Custom properties for the event. See:
             https://plausible.io/docs/custom-event-goals#using-custom-props
 
@@ -121,7 +124,7 @@ def send_custom_event(
             json=event_data,
             headers={
                 "content-type": "application/json",
-                "x-forwarded-for": get_xff(request),
+                "x-forwarded-for": remote_addr or get_xff(request),
                 "user-agent": get_user_agent(request),
             },
             timeout=REQUEST_TIMEOUT,

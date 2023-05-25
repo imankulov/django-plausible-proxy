@@ -50,3 +50,14 @@ def test_send_custom_event_successful_without_domain(rf, mock_requests):
     request = rf.get("/register", REMOTE_ADDR="1.2.3.4", SERVER_NAME="example.com")
     status = send_custom_event(request, "Register", props={"Plan": "premium"})
     assert status is True
+
+
+def test_send_custom_events_respects_explicit_remote_addr(rf, mock_requests):
+    request = rf.get("/register", REMOTE_ADDR="1.2.3.4", SERVER_NAME="example.com")
+    status = send_custom_event(
+        request, "Register", domain="example.com", remote_addr="1.2.3.5"
+    )
+    assert status is True
+
+    headers = mock_requests.post.call_args.kwargs["headers"]
+    assert headers["x-forwarded-for"] == "1.2.3.5"
