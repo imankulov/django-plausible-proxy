@@ -1,6 +1,6 @@
 # History
 
-## UNRELEASED
+## 0.5.1 (2023-07-19)
 
 - Made it possible to proxy script names with combined extensions
 
