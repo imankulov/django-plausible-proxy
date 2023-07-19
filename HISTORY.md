@@ -1,5 +1,9 @@
 # History
 
+## UNRELEASED
+
+- Made it possible to proxy script names with combined extensions
+
 ## 0.5.0 (2023-05-25)
 
 - Drop support for Python 3.7.

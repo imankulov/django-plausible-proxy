@@ -1,3 +1,4 @@
+import re
 from typing import Any, Dict, Optional, Tuple
 
 import requests
@@ -6,17 +7,7 @@ from django.core.cache import cache
 from django.http import HttpRequest
 
 # Ref: https://plausible.io/docs/script-extensions
-ALLOWED_SCRIPT_NAMES = {
-    "script.js",
-    "script.hash.js",
-    "script.outbound-links.js",
-    "script.file-downloads.js",
-    "script.exclusions.js",
-    "script.compat.js",
-    "script.local.js",
-    "script.manual.js",
-}
-
+ALLOWED_SCRIPT_REGEX = re.compile(r"^script([a-z.-]*)\.js$")
 
 CACHE_TTL = 86400
 
@@ -50,7 +41,7 @@ def get_script(script_name: str) -> ContentAndHeaders:
         The contents of the script as bytes (not a string) and headers to be passed
         back to the response.
     """
-    if script_name not in ALLOWED_SCRIPT_NAMES:
+    if not ALLOWED_SCRIPT_REGEX.match(script_name):
         raise ValueError(f"Unknown script {script_name}")
 
     cache_key = f"plausible:script:{script_name}"

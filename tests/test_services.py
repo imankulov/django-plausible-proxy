@@ -15,8 +15,11 @@ def mock_requests():
         yield requests
 
 
-def test_get_script_returns_javascript():
-    resp, headers = get_script("script.js")
+@pytest.mark.parametrize(
+    "script_name", ["script.js", "script.hash.js", "script.hash.outbound-links.js"]
+)
+def test_get_script_returns_javascript(script_name):
+    resp, headers = get_script(script_name)
     assert resp.startswith(b"!function()")
     assert headers["content-type"] == "application/javascript"
 
